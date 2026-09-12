@@ -40,20 +40,35 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
         new Thread(()->{
-            String[] allGroups = getGroupsNames();
-            Log.d("MyLog","allGroups: "+allGroups.length);
+            List<Group> allGroups = getGroupsNames();
+//            Log.d("MyLog","allGroups count: "+allGroups.length);
+            Log.d("fff", "name: "+((Group)allGroups.get(0)).name+"; id:"+((Group)allGroups.get(0)).id+"; subgroup:"+((Group)allGroups.get(0)).subgroup);
+            Log.d("fff", "name: "+((Group)allGroups.get(1)).name+"; id:"+((Group)allGroups.get(1)).id+"; subgroup:"+((Group)allGroups.get(1)).subgroup);
 
 
-            String[] matches = searchGroupsOnline("*",10);
-            Log.d("MyLog","findMatchOf:\n"+ Arrays.toString(matches));
+//            String[] matches = searchGroupsOnline("*",10);
+//            Log.d("MyLog","findMatchOf:\n"+ Arrays.toString(matches));
 
         }).start();
     }
 
+
+
+
+
+    // another class need
     final String groupsUrl = "https://timetable.magtu.ru/api/v2/groups";
     final String findUrl = "https://timetable.magtu.ru/api/v2/search?q=";
-    final String scheduleUrl = "https://timetable.magtu.ru/{url}";
-    private String[] getGroupsNames(){
+    final String scheduleUrl = "https://timetable.magtu.ru/";
+
+    public static class Group{
+        public int id;
+        public String name;
+        public int subgroup;
+    }
+
+    private List<Group> getGroupsNames(){
+        List<Group> output = new ArrayList<>();
         try {
             // Получаем
             URL url = new URL(groupsUrl);
@@ -74,50 +89,24 @@ public class MainActivity extends AppCompatActivity {
 
                 // json string to string[]
                 JSONArray jsonArray = new JSONArray(response.toString());
-                String[] array = new String[jsonArray.length()];
-                for (int i = 0; i < jsonArray.length(); i++){
-                    array[i] = jsonArray.getString(i);
+                Group newg = new Group();
+                JSONObject counter = new JSONObject();
+                for (int i = 0; i<jsonArray.length();i++){
+                    newg.id = jsonArray.getJSONObject(i).getInt("id");
+                    newg.name = jsonArray.getJSONObject(i).getString("name");
+                    if(counter.has(newg.name)) {
+                        counter.put(newg.name, counter.getInt(newg.name)+1);
+                    }else{
+                        counter.put(newg.name, 1);
+                    }
+                    newg.subgroup = counter.getInt(newg.name);
+                    output.add(newg);
+                    newg = new Group();
                 }
-                return array;
             }
         } catch (Exception e){
             throw new RuntimeException(e);
         }
-        return new String[]{};
-    }
-    public String[] searchGroupsOnline(String word, int limit) {
-        try {
-
-            URL url = new URL(findUrl + word);
-            String json = ""; // Твой метод для HTTP-запроса
-            HttpsURLConnection connection = (HttpsURLConnection) url.openConnection();
-            connection.setRequestMethod("GET");
-            connection.setRequestProperty("User-Agent", "Mozilla/5.0");
-            int responseCode = connection.getResponseCode();
-            if (responseCode == HTTP_OK){
-                BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-                StringBuilder response = new StringBuilder();
-                String inputLine;
-                while ((inputLine = in.readLine()) != null){
-                    response.append(inputLine);
-                }
-                in.close();
-                json = response.toString();
-            }
-            if (json.isEmpty()) return new String[]{};
-
-            JSONArray jsonArray = new JSONArray(json);
-            int resultSize = Math.min(limit, jsonArray.length());
-            String[] names = new String[resultSize];
-
-            for (int i = 0; i < resultSize; i++) {
-                JSONObject obj = jsonArray.getJSONObject(i);
-                // Поле "name" от API уже содержит уточнение подгруппы
-                names[i] = obj.getString("name");
-            }
-            return names;
-        }catch (Exception e){
-            throw new RuntimeException(e);
-        }
+        return output;
     }
 }
