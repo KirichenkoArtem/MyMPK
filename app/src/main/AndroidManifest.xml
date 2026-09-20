@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.INTERACT_ACROSS_PROFILES"/>
 
     <application
         android:allowBackup="true"
@@ -16,6 +15,7 @@
         android:theme="@style/Theme.StudyProject1">
         <activity
             android:name=".MainActivity"
+            android:screenOrientation="portrait"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
