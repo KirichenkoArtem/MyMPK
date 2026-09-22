@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:id="@+id/weekdayLL"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@color/grey"
+    android:layout_marginVertical="40dp">
+
+    <LinearLayout
+        android:id="@+id/upperLL"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@color/yellow_mpk"
+        android:padding="10dp"
+        android:gravity="center"
+        >
+        <TextView
+            android:id="@+id/weekdayTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:text="День недели"
+            android:maxLines="1"
+            android:autoSizeTextType="uniform"
+            android:textStyle="bold|italic"
+            />
+        <TextView
+            android:id="@+id/date_TV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:textColor="@color/grey"
+            android:text="nn month"
+            android:maxLines="1"
+            android:autoSizeTextType="uniform"
+            android:textStyle="bold|italic"
+            />
+        <TextView
+            android:id="@+id/chetnost_TV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:textColor="@color/very_grey"
+            android:text="Чётность"
+            android:maxLines="1"
+            android:autoSizeTextType="uniform"
+            android:textStyle="bold|italic"
+            />
+    </LinearLayout>
+</LinearLayout>
