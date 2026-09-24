@@ -1,13 +1,11 @@
 package com.example.studyproject1;
 
-import static android.content.Context.MODE_PRIVATE;
-
 import android.app.Activity;
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,8 +19,6 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentContainerView;
 import org.json.JSONArray;
-import org.json.JSONException;
-
 
 public class SetFragment extends Fragment {
 
@@ -35,6 +31,7 @@ public class SetFragment extends Fragment {
     private String selectedUrl;
     float screenHeight;
     private JSONArray groups;
+    FastLog FastLog;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -48,6 +45,7 @@ public class SetFragment extends Fragment {
         super.onResume();
         screenHeight = getResources().getDisplayMetrics().heightPixels;
         activity = requireActivity();
+        FastLog = ((MainActivity) requireActivity()).FastLog;
         goNextTV = activity.findViewById(R.id.goNext);
         upperTV = activity.findViewById(R.id.upperText);
         goNextTV.setVisibility(View.INVISIBLE);
@@ -119,7 +117,7 @@ public class SetFragment extends Fragment {
                     });
                 }
             } catch (Exception e) {
-                Log.e("log",e.toString());
+                FastLog.log("setFragment onChangeText"+e);
             }
         });
         threadForSearch.start();
@@ -129,12 +127,13 @@ public class SetFragment extends Fragment {
     private void next(){
         String groupName = selectedUrl;
         if (groupName == null || groupName == ""){
-            Toast.makeText(activity.getApplicationContext(),"Ошибка названия группы! 😨", Toast.LENGTH_SHORT).show();
+
+            FastLog.toast(activity, "Ошибка названия группы! 😨");
         }else{
             new Thread(()->{
-                SharedPreferences sharedPreferences = activity.getSharedPreferences("Prefs", MODE_PRIVATE);
+                SharedPreferences sharedPreferences = activity.getSharedPreferences("Prefs", Context.MODE_PRIVATE);
                 SharedPreferences.Editor editor = sharedPreferences.edit();
-                editor.putString("group_name", groupName); // Строка
+                editor.putString("group_name", groupName);
                 editor.apply();
             }).start();
             AnimationUtils.doMoveAndScaleAnimate(groupNameInput, 125, 0, -125, 1.25f, 1, ()->{

@@ -8,7 +8,7 @@
     <!-- Круг -->
     <path
         android:pathData="M12,2.5 a9.5,9.5 0 1,0 0,19 a9.5,9.5 0 1,0 0,-19 Z"
-        android:strokeColor="#FFFFFF"
+        android:strokeColor="#000"
         android:strokeWidth="1.3"
         android:strokeLineCap="round"
         android:strokeLineJoin="round" />
@@ -16,7 +16,7 @@
     <!-- Карандаш: контур (грифель → корпус → ластик) -->
     <path
         android:pathData="M8.18,15.82 L11.08,15.04 L15.89,10.23 L16.88,9.24 A1.5,1.5 0 0,0 14.76,7.12 L13.77,8.11 L8.96,12.92 Z"
-        android:strokeColor="#FFFFFF"
+        android:strokeColor="#000"
         android:strokeWidth="1.2"
         android:strokeLineCap="round"
         android:strokeLineJoin="round" />
@@ -24,7 +24,7 @@
     <!-- Разделительные линии: основание грифеля и ластик -->
     <path
         android:pathData="M11.08,15.04 L8.96,12.92 M15.89,10.23 L13.77,8.11"
-        android:strokeColor="#FFFFFF"
+        android:strokeColor="#000"
         android:strokeWidth="1.2"
         android:strokeLineCap="round" />
 

@@ -8,10 +8,10 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.fragment.app.FragmentContainerView;
 
-
 public class MainActivity extends AppCompatActivity {
 
     FragmentContainerView fragmentContainerView;
+    public FastLog FastLog = new FastLog();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
