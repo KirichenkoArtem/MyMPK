@@ -78,6 +78,12 @@ public class Utils {
                     weekName = el.previousElementSiblings().select("div.week-name").first();
                 }
                 String[] weekday_date = dayName.text().split("\\s+", 2);
+                if (weekday_date.length <= 1){
+
+                    weekday_date = new String[]{
+                            dayName.ownText(), "—"
+                    };
+                }
                 // Заполняем день его информацией
                 day.put("weekday", weekday_date.length>1 ? weekday_date[0] : "—");
                 day.put("date", weekday_date.length>1 ? weekday_date[1] : "—");

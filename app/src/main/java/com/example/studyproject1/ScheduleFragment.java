@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
@@ -24,6 +25,7 @@ public class ScheduleFragment extends Fragment {
     int screenHeight;
     String group_name;
     FastLog FastLog;
+    ImageView changeIV;
 
     @Nullable
     @Override
@@ -42,6 +44,7 @@ public class ScheduleFragment extends Fragment {
         upperLinearLayout = activity.findViewById(R.id.upperLinearLayout);
         textView = activity.findViewById(R.id.groupNameTV);
         scrollableLL = activity.findViewById(R.id.scrollableLL);
+        changeIV = activity.findViewById(R.id.pencil);
 
         SharedPreferences sharedPreferences = activity.getSharedPreferences("Prefs", Context.MODE_PRIVATE);
         group_name = sharedPreferences.getString("group_name","none");
@@ -54,6 +57,13 @@ public class ScheduleFragment extends Fragment {
                     updateSchedule();
                 });
             });
+        });
+
+        changeIV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                back();
+            }
         });
     }
 
@@ -101,5 +111,32 @@ public class ScheduleFragment extends Fragment {
             }
         }).start();
 
+    }
+
+
+
+
+
+    // Анимации перехода и вызов перехода
+    private void back(){
+        AnimationUtils.doMoveAndScaleAnimate(upperLinearLayout, 0, 0, -screenHeight, 1, 1, ()->{
+            AnimationUtils.doMoveAndScaleAnimate(upperLinearLayout, 800, 0, 150, 1, 1, ()->{
+                AnimationUtils.doMoveAndScaleAnimate(upperLinearLayout, 200, 0, 0, 1, 1, ()->{
+                    updateSchedule();
+                });
+            });
+        });
+
+        AnimationUtils.doMoveAndScaleAnimate(upperLinearLayout, 200, 0, 150, 1, 1, ()->{
+            AnimationUtils.doMoveAndScaleAnimate(upperLinearLayout, 800, 0, -screenHeight, 1, 1, ()->{
+
+            });
+        });
+    }
+    private void goToSet(){
+        requireActivity().getSupportFragmentManager().beginTransaction()
+                .replace(R.id.fragmentContainer, new SetFragment())
+                .addToBackStack(null)
+                .commit();
     }
 }

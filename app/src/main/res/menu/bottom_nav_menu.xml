@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/nav_day"   android:icon="@drawable/ic_day"   android:title="День" />
+    <item android:id="@+id/nav_week"  android:icon="@drawable/ic_week"  android:title="Неделя" />
+    <item android:id="@+id/nav_notes" android:icon="@drawable/ic_notes" android:title="Заметки" />
+</menu>

@@ -2,8 +2,32 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="yellow_mpk">#ed6e1f</color>
-    <color name="grey">#BFFFFFFF</color>
-    <color name="very_grey">#80FFFFFF</color>
     <color name="light_blue">#BF0000FF</color>
+
+
+    <color name="ic_launcher_background">#1F1F1F</color>
+
+    <color name="grey4_alpha_0.25">#40494949</color>
+    <color name="grey4_alpha_0.50">#80494949</color>
+    <color name="grey4_alpha_0.75">#BF494949</color>
+    <color name="grey4_alpha_0.85">#D9494949</color>
+
+    <color name="grey6_alpha_0.25">#401F1F1F</color>
+    <color name="grey6_alpha_0.50">#801F1F1F</color>
+    <color name="grey6_alpha_0.75">#BF1F1F1F</color>
+    <color name="grey6_alpha_0.85">#D91F1F1F</color>
+
+    <color name="grey0.25">#D9D9D9</color>
+    <color name="grey0.5">#C4C4C4</color>
+    <color name="grey1">#B0B0B0</color>
+    <color name="grey2">#919090</color>
+    <color name="grey3">#666666</color>
+    <color name="grey4">#494949</color>
+    <color name="grey5">#2E2E2E</color>
+    <color name="grey6">#1F1F1F</color>
+
+    <color name="yellow1">#FEBE96</color>
+    <color name="yellow2">#F49255</color>
+    <color name="yellow3">#ED6E1F</color>
+    <color name="yellow4">#B74D0B</color>
 </resources>

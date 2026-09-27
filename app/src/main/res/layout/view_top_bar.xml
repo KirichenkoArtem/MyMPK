@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/topBar"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/grey6"
+    android:elevation="4dp"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:paddingStart="20dp"
+    android:paddingTop="16dp"
+    android:paddingEnd="16dp"
+    android:paddingBottom="16dp">
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/groupNameTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/inter_black"
+            android:maxLines="1"
+            android:text="КС-26-1_2"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/subtitleTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:fontFamily="@font/inter_medium"
+            android:text="Расписание"
+            android:textColor="@color/grey2"
+            android:textSize="12sp" />
+    </LinearLayout>
+    <FrameLayout
+        android:id="@+id/changeGroupButton"
+        android:layout_width="42dp"
+        android:layout_height="42dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/bg_icon_circle"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?attr/selectableItemBackgroundBorderless">
+
+        <ImageView
+            android:id="@+id/changeGroupIV"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:layout_gravity="center"
+            android:contentDescription="Сменить группу"
+            android:src="@drawable/ic_change_group"
+            app:tint="@color/yellow3" />
+    </FrameLayout>
+    <FrameLayout
+        android:id="@+id/addButton"
+        android:layout_width="42dp"
+        android:layout_height="42dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/bg_icon_circle"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?attr/selectableItemBackgroundBorderless"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/addIV"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:layout_gravity="center"
+            android:contentDescription="Добавить заметку"
+            android:src="@drawable/ic_add"
+            app:tint="@color/yellow3" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/updateButton"
+        android:layout_width="42dp"
+        android:layout_height="42dp"
+        android:background="@drawable/bg_icon_circle"
+        >
+
+        <ImageView
+            android:id="@+id/updateIV"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:layout_gravity="center"
+            android:contentDescription="Обновить"
+            android:src="@drawable/update_icon"
+            app:tint="@color/yellow3" />
+    </FrameLayout>
+</LinearLayout>

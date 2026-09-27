@@ -1,98 +1,159 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/lessonLL"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/lessonRoot"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    android:gravity="center|bottom"
-    android:paddingVertical="0.5dp"
-    android:paddingHorizontal="1dp"
-    android:background="@color/grey">
+    android:layout_marginTop="10dp"
+    android:background="@drawable/rounded_fill"
+    android:backgroundTint="@color/white"
+    android:clickable="true"
+    android:elevation="2dp"
+    android:focusable="true"
+    android:foreground="?attr/selectableItemBackground"
+    android:paddingBottom="14dp">
+
+    <!-- Подсветка текущей пары -->
+    <View
+        android:id="@+id/activeTint"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/rounded_fill"
+        android:backgroundTint="@color/yellow1"
+        android:visibility="gone"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
         android:id="@+id/number"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:paddingHorizontal="15dp"
-        android:textStyle="bold"
-        android:text="N"
-        android:textColor="@color/black"
-        android:background="@color/white"
-        />
-    <LinearLayout
-        android:layout_width="0dp"
-        android:layout_weight="1"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:fontFamily="@font/inter_black"
+        android:text="1"
+        android:textColor="@color/yellow3"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@id/nameTeacherLL"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/nameTeacherLL" />
+
+    <LinearLayout
+        android:id="@+id/nameTeacherLL"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="14dp"
+        android:layout_marginEnd="8dp"
         android:orientation="vertical"
-        >
+        app:layout_constraintEnd_toStartOf="@id/rightColumn"
+        app:layout_constraintStart_toEndOf="@id/number"
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/lesson_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center_vertical|left"
-            android:textStyle="italic"
-            android:text="Предметикс"
+            android:ellipsize="end"
+            android:fontFamily="@font/inter_black"
             android:maxLines="1"
-            android:autoSizeTextType="uniform"
-            android:textColor="@color/black"
-            android:background="@color/white"
-            />
+            android:text="Предмет"
+            android:textColor="@color/grey6"
+            android:textSize="16sp" />
+
         <TextView
             android:id="@+id/teacher_fio"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center_vertical|left"
-            android:textStyle="italic"
-            android:text="Преподователь"
+            android:ellipsize="end"
+            android:fontFamily="@font/inter_medium"
             android:maxLines="1"
-            android:autoSizeTextType="uniform"
-            android:textColor="@color/light_blue"
-            android:background="@drawable/underline_bg"
-            />
+            android:text="Преподаватель"
+            android:textColor="@color/grey3"
+            android:textSize="13sp" />
     </LinearLayout>
-    <TextView
-        android:id="@+id/lesson_type"
-        android:layout_width="0dp"
-        android:layout_weight="1"
-        android:layout_height="match_parent"
-        android:paddingHorizontal="10dp"
-        android:gravity="bottom|right"
-        android:textStyle="italic"
-        android:text="Тип пары"
-        android:textColor="@color/black"
-        android:background="@color/white"
-        />
+
+    <!-- Правая колонка объединена в LinearLayout, чтобы Barrier работал по её низу -->
     <LinearLayout
+        android:id="@+id/rightColumn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="14dp"
+        android:layout_marginEnd="16dp"
+        android:gravity="end"
         android:orientation="vertical"
-        >
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
         <TextView
             android:id="@+id/lesson_time"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center_vertical|right"
-            android:textStyle="italic"
-            android:text="hh:mm — hh:mm"
+            android:fontFamily="@font/inter_black"
+            android:text="10:00 — 11:30"
+            android:textColor="@color/grey5"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/lesson_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:ellipsize="end"
+            android:fontFamily="@font/inter_medium"
+            android:gravity="end"
             android:maxLines="1"
-            android:autoSizeTextType="uniform"
-            android:textColor="@color/black"
-            android:background="@color/white"
-            />
+            android:text="Лекция"
+            android:textColor="@color/grey3"
+            android:textSize="12sp" />
+
         <TextView
             android:id="@+id/lesson_classroom"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center_vertical|right"
-            android:textStyle="italic"
-            android:text="Аудитория"
-            android:maxLines="1"
-            android:autoSizeTextType="uniform"
-            android:textColor="@color/black"
-            android:background="@color/white"
-            />
+            android:layout_marginTop="2dp"
+            android:fontFamily="@font/inter_medium"
+            android:text="ауд. 000"
+            android:textColor="@color/grey3"
+            android:textSize="12sp" />
     </LinearLayout>
-</LinearLayout>
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/bottomBarrier"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="bottom"
+        app:constraint_referenced_ids="nameTeacherLL,rightColumn" />
+
+    <View
+        android:id="@+id/noteLine"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="16dp"
+        android:background="@color/yellow3"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/bottomBarrier" />
+
+    <TextView
+        android:id="@+id/noteTV"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:fontFamily="@font/inter_medium"
+        android:lineSpacingExtra="2dp"
+        android:text=""
+        android:textColor="@color/grey4"
+        android:textSize="13sp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/noteLine" />
+</androidx.constraintlayout.widget.ConstraintLayout>

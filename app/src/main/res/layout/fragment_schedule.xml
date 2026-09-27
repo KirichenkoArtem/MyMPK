@@ -34,6 +34,7 @@
         android:orientation="horizontal"
         android:paddingVertical="5dp"
         android:gravity="center_vertical"
+        android:background="@color/yellow3"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
@@ -49,13 +50,14 @@
             android:autoSizeTextType="uniform"
             android:fontFamily="sans-serif-black"
             android:text="none"
-            android:textColor="@color/black"
+            android:textColor="@color/grey6_alpha_0.85"
             android:textStyle="italic|bold" />
         <ImageView
             android:id="@+id/pencil"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginHorizontal="15dp"
+            android:backgroundTint="@color/grey6_alpha_0.50"
             android:background="@drawable/pencil"
             />
     </LinearLayout>
